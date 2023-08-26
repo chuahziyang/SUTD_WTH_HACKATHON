@@ -5,13 +5,15 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid'
 
 const stats = [
-  { name: 'Total Subscribers', stat: '71,897', previousStat: '70,946', change: '12%', changeType: 'increase' },
-  { name: 'Avg. Open Rate', stat: '58.16%', previousStat: '56.14%', change: '2.02%', changeType: 'increase' },
-  { name: 'Avg. Click Rate', stat: '24.57%', previousStat: '28.62%', change: '4.05%', changeType: 'decrease' },
+  { name: 'Points Today', stat: '1,456' },
+  { name: 'CO2 Saved Today', stat: '0.407t' },
+  { name: 'Overall points', stat: '12,785' },
+  // previousStat: '70,946', change: '12%', changeType: 'increase'
 ]
 
-const people = [
-  { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
+const activites = [
+  { date: '27th Aug 2023', time: '04:00 PM', activity: 'Walked a total distance of 5.5km', pts: '600' },
+  { date: '26th Aug 2023', time: '08:59 AM', activity: 'Carpooled a total distance of 3.4km', pts: '475'}
   // More people...
 ]
 
@@ -75,7 +77,7 @@ export default function Example() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'border-indigo-500 text-gray-900'
+                              ? 'border-[#009278] text-gray-900'
                               : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
                             'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                           )}
@@ -89,7 +91,7 @@ export default function Example() {
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <button
                       type="button"
-                      className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:text-[#009278]"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -98,7 +100,7 @@ export default function Example() {
                     {/* Profile dropdown */}
                     <Menu as="div" className="ml-3 relative">
                       <div>
-                        <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#009278]">
                           <span className="sr-only">Open user menu</span>
                           <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
                         </Menu.Button>
@@ -134,7 +136,7 @@ export default function Example() {
                   </div>
                   <div className="-mr-2 flex items-center sm:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Disclosure.Button className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#009278]">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -155,7 +157,7 @@ export default function Example() {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? 'bg-indigo-50 border-indigo-500 text-indigo-700'
+                          ? 'bg-indigo-50 border-[#009278] text-indigo-700'
                           : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
                         'block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
                       )}
@@ -176,7 +178,7 @@ export default function Example() {
                     </div>
                     <button
                       type="button"
-                      className="ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#009278]"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -200,27 +202,26 @@ export default function Example() {
           )}
         </Disclosure>
 
-        <div className="py-10">
+        <div className="py-12">
           <header>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h1 className="text-3xl font-bold leading-tight text-gray-900">Dashboard</h1>
+              <h3 className="text-lg font-400 leading-tight text-gray-900">Victor Zhao</h3>
             </div>
           </header>
           <main>
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
  <div>
-      <h3 className="text-lg leading-6 font-medium text-gray-900">Last 30 days</h3>
+      <h1 className="text-4xl leading-10 font-bold text-gray-900">Dashboard</h1>
       <dl className="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-3 md:divide-y-0 md:divide-x">
         {stats.map((item) => (
           <div key={item.name} className="px-4 py-5 sm:p-6">
-            <dt className="text-base font-normal text-gray-900">{item.name}</dt>
-            <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
-              <div className="flex items-baseline text-2xl font-semibold text-indigo-600">
+            <dt className="text-base font-medium text-center text-gray-900">{item.name}</dt>
+            <dd className="mt-1 flex justify-center items-baseline md:block lg:flex">
+              <div className="text-7xl py-8 font-semibold text-[#009278]">
                 {item.stat}
-                <span className="ml-2 text-sm font-medium text-gray-500">from {item.previousStat}</span>
               </div>
 
-              <div
+              {/* <div
                 className={classNames(
                   item.changeType === 'increase' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800',
                   'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0'
@@ -240,26 +241,26 @@ export default function Example() {
 
                 <span className="sr-only">{item.changeType === 'increase' ? 'Increased' : 'Decreased'} by</span>
                 {item.change}
-              </div>
+              </div> */}
             </dd>
           </div>
         ))}
       </dl>
     </div>
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 mt-10">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Users</h1>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the users in your account including their name, title, email and role.
+            A list of all activities within the past 30 days including their date, time, and a point rewards summary.
           </p>
         </div>
         <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+            className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#009278] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#009278] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2 sm:w-auto"
           >
-            Add user
+            New Activity
           </button>
         </div>
       </div>
@@ -271,28 +272,28 @@ export default function Example() {
                 <thead className="bg-gray-50">
                   <tr className="divide-x divide-gray-200">
                     <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                      Name
+                      Date/Time
                     </th>
                     <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Title
+                      Activity
                     </th>
                     <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
-                      Email
+                      Points Awarded
                     </th>
-                    <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                    {/* <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
                       Role
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email} className="divide-x divide-gray-200">
-                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
+                  {activites.map((activity) => (
+                    <tr key={activity.date} className="divide-x divide-gray-200">
+                      <td className="whitespace-nowrap py-4 pl-4 text-sm font-medium text-gray-900 sm:pl-6">
+                        {activity.date}<span className="whitespace-nowrap pb-1 pl-2 align-middle text-xs text-gray-500">at {activity.time}</span> 
                       </td>
-                      <td className="whitespace-nowrap p-4 text-sm text-gray-500">{person.title}</td>
-                      <td className="whitespace-nowrap p-4 text-sm text-gray-500">{person.email}</td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{person.role}</td>
+                      <td className="whitespace-nowrap p-4 text-sm text-gray-500">{activity.activity}</td>
+                      <td className="whitespace-nowrap p-4 text-sm text-gray-500">{activity.pts}</td>
+                      {/* <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{person.role}</td> */}
                     </tr>
                   ))}
                 </tbody>
