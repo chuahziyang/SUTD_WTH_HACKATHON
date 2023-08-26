@@ -2,7 +2,9 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
+import supabase from "../utils/supabaseClient";
+import Link from "next/link";
 
 const user = {
   name: "Tom Cook",
@@ -20,11 +22,20 @@ const navigation = [
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: handleSignOut },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
+}
+
+async function handleSignOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.error("Error signing out:", error.message);
+  } else {
+    router.push("/");
+  }
 }
 
 export default function Wrapper({ children }) {
@@ -50,23 +61,23 @@ export default function Wrapper({ children }) {
                     <div className="flex flex-shrink-0 items-center">
                       <img
                         className="block h-8 w-auto lg:hidden"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        src="img/logo.svg"
                         alt="Workflow"
                       />
                       <img
                         className="hidden h-8 w-auto lg:block"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                        src="img/logo.svg"
                         alt="Workflow"
                       />
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className={classNames(
                             item.href === route
-                              ? "border-indigo-500 text-gray-900"
+                              ? "border-thegreen text-gray-900"
                               : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                             "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
                           )}
@@ -75,7 +86,7 @@ export default function Wrapper({ children }) {
                           }
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -114,7 +125,12 @@ export default function Wrapper({ children }) {
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
-                                  href={item.href}
+                                  href="#"
+                                  onClick={() =>
+                                    typeof item.href === "function"
+                                      ? item.href()
+                                      : null
+                                  }
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"
