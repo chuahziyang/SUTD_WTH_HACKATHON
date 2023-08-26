@@ -1,12 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Wrapper from "@components/components/wrapper";
-import Modal from "@components/components/modal";
+import Success from "@components/components/success";
 import { useState } from "react";
 
 export default function Example() {
   const [selectedOption, setSelectedOption] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [pts, setPts] = useState(0);
+  const [entered, setentered] = useState(false);
 
   // State for additional fields
   const [additionalFields, setAdditionalFields] = useState([
@@ -30,6 +31,7 @@ export default function Example() {
     });
 
     setPts(totalPts);
+    setentered(true);
   };
 
   const addField = () => {
@@ -110,6 +112,11 @@ export default function Example() {
             <p>Points: {parseInt(pts)}</p>
           </div>
         </div>
+        {entered && (
+          <div>
+            <Success></Success>
+          </div>
+        )}
       </Wrapper>
     </>
   );

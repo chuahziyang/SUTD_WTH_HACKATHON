@@ -1,11 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Wrapper from "@components/components/wrapper";
 import React, { useState } from "react";
+import Success from "@components/components/success";
 
 export default function Example() {
   const [selectedOption, setSelectedOption] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [pts, setpts] = useState(0);
+  const [entered, setentered] = useState(false);
 
   const calc = () => {
     const ans = {
@@ -16,6 +18,7 @@ export default function Example() {
     };
 
     setpts((inputValue / ans[selectedOption]) * 1000);
+    setentered(true);
   };
   // const arr = [8, 12, 80, 30];
   // // Check the selected option and execute the corresponding script
@@ -87,10 +90,16 @@ export default function Example() {
               <div>
                 <button onClick={calc}>Add Entry</button>
                 {pts}
+                {entered}
               </div>
             </div>
           </div>
         </div>
+        {entered && (
+          <div>
+            <Success></Success>
+          </div>
+        )}
       </Wrapper>
     </>
   );
