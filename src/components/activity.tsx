@@ -1,33 +1,59 @@
-import { useState } from "react";
+import supabase from "@components/utils/supabaseClient";
+import { useEffect, useState } from "react";
+
+const getFormattedActivity = (entry) => {
+  const activityTypes = {
+    walk: "Walked",
+    cycle: "Cycled",
+    carpool: "Carpooled",
+    publicTransport: "Traveled via public transport",
+  };
+
+  const verb = activityTypes[entry.type] || "Traveled";
+  return `${verb} a total distance of ${entry.distance} km`;
+};
 
 export default function Activity() {
   const [activities, setActivities] = useState([
-    {
-      date: "27th Aug 2023",
-      time: "04:00 PM",
-      activity: "Walked a total distance of 5.5km",
-      pts: "600",
-    },
-    {
-      date: "26th Aug 2023",
-      time: "08:59 AM",
-      activity: "Carpooled a total distance of 3.4km",
-      pts: "475",
-    },
-    // More people...
+    // {
+    //   date: "27th Aug 2023",
+    //   time: "04:00 PM",
+    //   activity: "Walked a total distance of 5.5km",
+    //   pts: "600",
+    // },
+    // {
+    //   date: "26th Aug 2023",
+    //   time: "08:59 AM",
+    //   activity: "Carpooled a total distance of 3.4km",
+    //   pts: "475",
+    // },
+    // // More people...
   ]);
 
-  const handleNewActivity = () => {
-    // Get new activity data
-    const newActivity = {
-      date: "28th Aug 2023",
-      time: "09:00 AM",
-      activity: "New activity description",
-      pts: "500",
-    };
+  useEffect(() => {
+    fetchActivities();
+  }, []);
 
-    // Update activities array
-    setActivities((prevActivities) => [...prevActivities, newActivity]);
+  const fetchActivities = async () => {
+    const { data, error } = await supabase
+      .from("activityEntries")
+      .select("*")
+      .order("dateTime", { ascending: false })
+      .limit(30);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    const formattedData = data.map((entry) => ({
+      date: new Date(entry.dateTime).toLocaleDateString(),
+      time: new Date(entry.dateTime).toLocaleTimeString(),
+      activity: getFormattedActivity(entry),
+      pts: entry.pointsAward,
+    }));
+
+    setActivities(formattedData);
   };
 
   return (
