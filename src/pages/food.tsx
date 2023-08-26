@@ -1,41 +1,113 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Wrapper from "@components/components/wrapper";
 import Modal from "@components/components/modal";
+import { useState } from "react";
 
 export default function Example() {
+  const [selectedOption, setSelectedOption] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [pts, setPts] = useState(0);
+
+  // State for additional fields
+  const [additionalFields, setAdditionalFields] = useState([
+    { selectedOption: "", inputValue: "" },
+  ]);
+
+  const calc = () => {
+    const ans = {
+      meat: 25,
+      dairy: 9,
+      veg: 3,
+      fruits: 1,
+    };
+
+    // Calculate points for the main dropdown and input
+    let totalPts = (inputValue / ans[selectedOption]) * 250;
+
+    // Calculate points for additional dropdowns and inputs
+    additionalFields.forEach((field) => {
+      totalPts += (field.inputValue / ans[field.selectedOption]) * 250;
+    });
+
+    setPts(totalPts);
+  };
+
+  const addField = () => {
+    // Add a new field with default values
+    setAdditionalFields([
+      ...additionalFields,
+      { selectedOption: "", inputValue: "" },
+    ]);
+  };
+
   return (
     <>
       <Wrapper>
-        <div className="bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Update your email
-            </h3>
-            <div className="mt-2 max-w-xl text-sm text-gray-500">
-              <p>
-                Change the email address you want associated with your account.
-              </p>
-            </div>
-            <form className="mt-5 sm:flex sm:items-center">
-              <div className="w-full sm:max-w-xs">
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <button
-                type="submit"
-                className="mt-3 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
+        <div>
+          <div>
+            <label>Select an option:</label>
+            <select
+              value={selectedOption}
+              onChange={(e) => {
+                setSelectedOption(e.target.value);
+              }}
+            >
+              <option value="">Type of food</option>
+              <option value="meat">Meat</option>
+              <option value="dairy">Dairy Products</option>
+              <option value="veg">Vegetables</option>
+              <option value="fruits">Fruits</option>
+            </select>
+          </div>
+          <div>
+            <label>Amount consumed(g):</label>
+            <input
+              type="number"
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+            />
+          </div>
+
+          {additionalFields.map((field, index) => (
+            <div key={index}>
+              <label>Select an option:</label>
+              <select
+                value={field.selectedOption}
+                onChange={(e) => {
+                  const updatedFields = [...additionalFields];
+                  updatedFields[index].selectedOption = e.target.value;
+                  setAdditionalFields(updatedFields);
+                }}
               >
-                Save
-              </button>
-            </form>
+                <option value="">Type of food</option>
+                <option value="meat">Meat</option>
+                <option value="dairy">Dairy Products</option>
+                <option value="veg">Vegetables</option>
+                <option value="fruits">Fruits</option>
+              </select>
+              <label>Amount consumed(g):</label>
+              <input
+                type="number"
+                value={field.inputValue}
+                onChange={(e) => {
+                  const updatedFields = [...additionalFields];
+                  updatedFields[index].inputValue = e.target.value;
+                  setAdditionalFields(updatedFields);
+                }}
+              />
+            </div>
+          ))}
+
+          <div>
+            <button onClick={addField}>Add Field</button>
+          </div>
+          <div>
+            <button onClick={calc}>Calculate</button>
+          </div>
+          <div>
+            <p>Points: {parseInt(pts)}</p>
           </div>
         </div>
       </Wrapper>
