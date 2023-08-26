@@ -84,6 +84,16 @@ function Login() {
                   Login
                 </button>
               </div>
+
+              <div className="text-center text-sm">
+                Or{" "}
+                <a
+                  href="/signup"
+                  className="font-medium text-custom-green hover:text-custom-green-hover"
+                >
+                  create an account
+                </a>
+              </div>
             </form>
           </div>
         </div>
