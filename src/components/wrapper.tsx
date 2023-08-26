@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
 
 const user = {
   name: "Tom Cook",
@@ -10,8 +11,9 @@ const user = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", current: true },
-  { name: "Add Record", href: "/record", current: false },
+  { name: "Dashboard", href: "/dashboard" },
+  { name: "Add Record", href: "/record" },
+  { name: "Add Food", href: "/food" },
 ];
 
 const userNavigation = [
@@ -25,6 +27,7 @@ function classNames(...classes) {
 }
 
 export default function Wrapper({ children }) {
+  const route = useRouter().pathname;
   return (
     <>
       {/*
@@ -35,6 +38,7 @@ export default function Wrapper({ children }) {
         <body class="h-full">
         ```
       */}
+
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
@@ -60,12 +64,14 @@ export default function Wrapper({ children }) {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current
+                            item.href === route
                               ? "border-indigo-500 text-gray-900"
                               : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                             "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
                           )}
-                          aria-current={item.current ? "page" : undefined}
+                          aria-current={
+                            item.href === route ? "page" : undefined
+                          }
                         >
                           {item.name}
                         </a>
