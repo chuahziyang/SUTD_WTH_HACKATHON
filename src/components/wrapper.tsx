@@ -2,7 +2,8 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
+import supabase from "../utils/supabaseClient";
 
 const user = {
   name: "Tom Cook",
@@ -19,11 +20,20 @@ const navigation = [
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: handleSignOut },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
+}
+
+async function handleSignOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    console.error("Error signing out:", error.message);
+  } else {
+    router.replace("/login");
+  }
 }
 
 export default function Wrapper({ children }) {
@@ -113,7 +123,12 @@ export default function Wrapper({ children }) {
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
-                                  href={item.href}
+                                  href="#"
+                                  onClick={() =>
+                                    typeof item.href === "function"
+                                      ? item.href()
+                                      : null
+                                  }
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
                                     "block px-4 py-2 text-sm text-gray-700"
