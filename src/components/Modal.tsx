@@ -59,6 +59,7 @@ const Modal = () => {
       <div>
         <button onClick={calc}>Calculate</button>
       </div>
+      <div>{pts}</div>
     </div>
   );
 };
