@@ -51,9 +51,9 @@ export default function Dashboard() {
         <div className="py-12">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h3 className="font-400 text-lg leading-tight text-gray-900">
-                Victor Zhao
-              </h3>
+              <h2 className="font-400 pb-4 text-lg leading-tight text-gray-900">
+                Welcome, Victor Zhao
+              </h2>
             </div>
           </header>
           <main>
