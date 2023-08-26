@@ -39,16 +39,16 @@ export default function Example() {
             </button>
           </div>
           {/* <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div> */}
+{navigation.map((item) => (
+<a
+key={item.name}
+href={item.href}
+className="text-sm font-semibold leading-6 text-gray-900"
+>
+{item.name}
+</a>
+))}
+</div> */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a
               href="/login"
@@ -174,9 +174,13 @@ export default function Example() {
 
                     <div className="mt-4 lg:ml-6 lg:mt-0">
                       <p className="text-xl text-gray-700">
-                        Through this initiative, we aim to reduce our carbon
-                        footprint while providing you an incentive to join us in
-                        doing so.
+                        We aim to promote inclusive, safe, resilient, and
+                        sustainable transport systems for all By reducing carbon
+                        emissions and promoting more sustainable transportation
+                        modes to combat climate change, individuals are
+                        encouraged to be more conscious in decision-making and
+                        align with broader goals of environmental conservation
+                        and societal well-being.
                       </p>
                     </div>
                   </div>
@@ -205,9 +209,13 @@ export default function Example() {
 
                     <div className="mt-4 lg:ml-6 lg:mt-0">
                       <p className="text-xl text-gray-700">
-                        We adopted features from different sources and combined
-                        it onto one platform for you to track your progress and
-                        earn rewards.
+                        The viability of affordable, accessible and sustainable
+                        transport systems is incentivised on the platform as
+                        users are allowed to earn rewards and track their
+                        progress towards a greener lifestyle. These features
+                        allow for users to understand their carbon footprint and
+                        encourages a behaviour change towards green products,
+                        fostering a sustainable-focused society
                       </p>
                     </div>
                   </div>
@@ -238,7 +246,9 @@ export default function Example() {
                       <p className="text-xl text-gray-700">
                         Listed are some of the key challenges we face and we
                         welcome anyone to contact us with their proposed
-                        solution.
+                        solution. Integration with Multiple Platforms
+                        Partnership and Collaboration Behavioral Psychology
+                        Understanding
                       </p>
                     </div>
                   </div>
@@ -269,7 +279,9 @@ export default function Example() {
                       <p className="text-xl text-gray-700">
                         Proposed are some ways we can scale our initiative and
                         reach a wider audience while serving a greater good. Do
-                        contact us if you can help us achieve our goal!
+                        contact us if you can help us achieve our goal! API
+                        Integration Machine Learning Algorithms Multi-Platform
+                        Support Personalization
                       </p>
                     </div>
                   </div>
