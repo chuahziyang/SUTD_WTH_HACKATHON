@@ -9,6 +9,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const router = useRouter();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -32,10 +33,11 @@ function Signup() {
         },
       });
       console.log("Check your email for the confirmation link");
-      alert("Check your email for the confirmation link");
+      console.log("sign up successful");
     } catch (error) {
       console.log(error);
     }
+    router.push("/dashboard");
   }
 
   return (
