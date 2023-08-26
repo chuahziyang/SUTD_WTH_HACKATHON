@@ -55,7 +55,7 @@ const Modal = () => {
         </select>
       </div>
       <div>
-        <label>Number of servings</label>
+        <label>Amount consumed(g)</label>
         <input
           type="number"
           value={inputValue}
@@ -76,9 +76,13 @@ const Modal = () => {
               setAdditionalFields(updatedFields);
             }}
           >
-            {/* Options here */}
+            <option value="">Type of food</option>
+            <option value="meat">Meat</option>
+            <option value="dairy">Dairy Products</option>
+            <option value="veg">Vegetables</option>
+            <option value="fruits">Fruits</option>
           </select>
-          <label>Distance(km) travelled:</label>
+          <label>Amount consumed(g)</label>
           <input
             type="number"
             value={field.inputValue}
