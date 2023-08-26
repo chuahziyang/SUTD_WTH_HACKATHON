@@ -49,58 +49,16 @@ export default function Example() {
       console.error(userError);
       return;
     }
+    const today = new Date().toISOString().split("T")[0]; // get current date
 
     const { error: updateError } = await supabase
       .from("userDetails")
       .update({
         pointsToday: user[0].pointsToday + points,
+        // co2SavedToday: user[0].co2SavedToday + points,
         overallPoints: user[0].overallPoints + points,
       })
       .eq("userId", userId);
-
-    // const today = new Date().toISOString().split("T")[0]; // get current date
-
-    // // get latest activity entry for user
-    // const { data: latestActivity, error: latestActivityError } = await supabase
-    //   .from("activityEntries")
-    //   .select("dateTime")
-    //   .eq("userId", userId)
-    //   .order("dateTime", { ascending: false })
-    //   .limit(1);
-
-    // if (latestActivityError) {
-    //   console.error(latestActivityError);
-    //   return;
-    // }
-    // const lastActivityDate =
-    //   latestActivity && latestActivity[0]
-    //     ? latestActivity[0].dateTime.split("T")[0]
-    //     : null;
-    // let pointsToday = 0;
-
-    // //update points, co2 saved today, overall points
-    // const { data: userDetails, error: userDetailsError } = await supabase
-    //   .from("userDetails")
-    //   .select("*")
-    //   .eq("userId", userId);
-
-    // if (userDetailsError) {
-    //   console.error(userDetailsError);
-    //   return;
-    // }
-
-    // if (userDetails && userDetails[0]) {
-    //   pointsToday = today !== lastActivityDate ? 0 : userDetails[0].pointsToday;
-
-    //   await supabase
-    //     .from("userDetails")
-    //     .update({
-    //       pointsToday: userDetails[0].pointsToday + pts,
-    //       // co2SavedToday: userDetails[0].co2SavedToday + pts,
-    //       overallPoints: userDetails[0].overallPoints + pts,
-    //     })
-    //     .eq("userId", userId);
-    // }
   };
 
   return (
