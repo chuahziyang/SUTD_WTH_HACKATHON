@@ -2,6 +2,7 @@
 import Wrapper from "@components/components/wrapper";
 import React, { useState } from "react";
 import Success from "@components/components/success";
+import supabase from "@components/utils/supabaseClient";
 
 export default function Example() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -9,16 +10,31 @@ export default function Example() {
   const [pts, setpts] = useState(0);
   const [entered, setentered] = useState(false);
 
-  const calc = () => {
+  const calc = async () => {
     const ans = {
       walk: 4,
       cycle: 12,
       carpool: 80,
       publicTransport: 30,
     };
-    console.log((inputValue / ans[selectedOption]) * 1000);
-    setpts((inputValue / ans[selectedOption]) * 1000);
+    const points = (inputValue / ans[selectedOption]) * 1000;
+    console.log(points);
+    setpts(points);
     setentered(true);
+
+    const { data, error } = await supabase.from("activityEntries").insert({
+      userId: (await supabase.auth.getUser()).data.user?.id,
+      type: selectedOption,
+      description: "",
+      pointsAward: points,
+      dateTime: new Date(),
+    });
+
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data);
+    }
   };
 
   return (
@@ -43,6 +59,7 @@ export default function Example() {
                 }}
                 id="location"
                 name="location"
+                required
                 className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               >
                 <option disabled selected>
@@ -71,6 +88,7 @@ export default function Example() {
                   }}
                   name="price"
                   id="price"
+                  required
                   className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   placeholder="0.00km"
                 />
@@ -85,7 +103,7 @@ export default function Example() {
               </div>
               <div>
                 <button
-                  type="button"
+                  type="submit"
                   className="mt-5 inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   onClick={calc}
                 >
