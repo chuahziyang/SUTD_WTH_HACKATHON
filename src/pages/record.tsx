@@ -27,7 +27,7 @@ export default function Example() {
         <div className="bg-white shadow sm:rounded-lg">
           <div className="px-4 py-5 sm:p-6">
             <h3 className="mb-6 text-lg font-medium leading-6 text-gray-900">
-              Add Carbon Emmision Entry
+              Add Carbon Emission Entry
             </h3>
             <div className="relative mt-2 rounded-md shadow-sm">
               <label
