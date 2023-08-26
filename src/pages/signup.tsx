@@ -1,6 +1,7 @@
 import { useState } from "react";
 import supabase from "../utils/supabaseClient";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -60,13 +61,13 @@ function Signup() {
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <a href="/">
+          <Link href="/">
             <img
               className="mx-auto h-12 w-auto"
               src="img/logo.svg"
               alt="logo"
             />
-          </a>
+          </Link>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create an account
           </h2>
@@ -169,12 +170,12 @@ function Signup() {
 
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <a
+                <Link
                   href="/login"
                   className="font-medium text-custom-green hover:text-custom-green-hover"
                 >
                   Login
-                </a>
+                </Link>
               </div>
             </form>
           </div>

@@ -4,6 +4,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import router, { useRouter } from "next/router";
 import supabase from "../utils/supabaseClient";
+import Link from "next/link";
 
 const user = {
   name: "Tom Cook",
@@ -33,7 +34,7 @@ async function handleSignOut() {
   if (error) {
     console.error("Error signing out:", error.message);
   } else {
-    router.replace("/login");
+    router.replace("/");
   }
 }
 
@@ -60,18 +61,18 @@ export default function Wrapper({ children }) {
                     <div className="flex flex-shrink-0 items-center">
                       <img
                         className="block h-8 w-auto lg:hidden"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        src="img/logo.svg"
                         alt="Workflow"
                       />
                       <img
                         className="hidden h-8 w-auto lg:block"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                        src="img/logo.svg"
                         alt="Workflow"
                       />
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -85,7 +86,7 @@ export default function Wrapper({ children }) {
                           }
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
