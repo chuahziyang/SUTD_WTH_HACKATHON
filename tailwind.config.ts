@@ -8,6 +8,8 @@ export default {
         thegreen: "#009278",
         thelightgreen: "#cdf4ec",
         theorange: "#ff8100",
+        "custom-green-hover": "#007f66",
+        "custom-green": "#009278",
       },
     },
   },
