@@ -1,6 +1,6 @@
 import React from "react";
 
-const Success = () => {
+const Success = (props) => {
   return (
     <div className="rounded-md bg-green-50 p-4">
       <div className="flex">
@@ -10,9 +10,10 @@ const Success = () => {
             className="text-sm font-medium text-green-800"
             // v-bind:className="mapping[success].textcolour"
           >
-            You have successfully logged this meal!, Total CO2 Used: 18g
+            You have successfully logged this {props.which ? "trip" : "meal"}!,
+            Total CO2 Used: 18g
             <br />
-            Thats 18% less that the average meal! Good Job!
+            Thats {props.points} points for you!
           </p>
         </div>
       </div>

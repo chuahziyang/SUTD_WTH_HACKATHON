@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Success from "@components/components/success";
 
 export default function Example() {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [pts, setpts] = useState(0);
   const [entered, setentered] = useState(false);
@@ -16,7 +16,7 @@ export default function Example() {
       carpool: 80,
       publicTransport: 30,
     };
-
+    console.log((inputValue / ans[selectedOption]) * 1000);
     setpts((inputValue / ans[selectedOption]) * 1000);
     setentered(true);
   };
@@ -42,7 +42,7 @@ export default function Example() {
             <h3 className="mb-6 text-lg font-medium leading-6 text-gray-900">
               Add Carbon Emmision Entry
             </h3>
-            <div>
+            <div className="relative mt-2 rounded-md shadow-sm">
               <label
                 htmlFor="location"
                 className="block text-sm font-medium text-gray-700"
@@ -56,8 +56,12 @@ export default function Example() {
                 }}
                 id="location"
                 name="location"
-                className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               >
+                <option disabled selected>
+                  {" "}
+                  -- select an option --{" "}
+                </option>
                 <option value="walk">Walk</option>
                 <option value="cycle">Cycle</option>
                 <option value="carpool">Carpool</option>
@@ -72,9 +76,6 @@ export default function Example() {
                 Distance Travelled
               </label>
               <div className="relative mt-2 rounded-md shadow-sm">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <span className="text-gray-500 sm:text-sm">$</span>
-                </div>
                 <input
                   type="number"
                   value={inputValue}
@@ -83,21 +84,33 @@ export default function Example() {
                   }}
                   name="price"
                   id="price"
-                  className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="0.00"
+                  className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  placeholder="0.00km"
                 />
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <span
+                    className="text-gray-500 sm:text-sm"
+                    id="price-currency"
+                  >
+                    Km
+                  </span>
+                </div>
               </div>
               <div>
-                <button onClick={calc}>Add Entry</button>
-                {pts}
-                {entered}
+                <button
+                  type="button"
+                  className="mt-5 inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  onClick={calc}
+                >
+                  Add Entry
+                </button>
               </div>
             </div>
           </div>
         </div>
         {entered && (
           <div>
-            <Success></Success>
+            <Success which={true} points={parseInt(pts)}></Success>
           </div>
         )}
       </Wrapper>
