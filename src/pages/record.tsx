@@ -26,13 +26,24 @@ export default function Example() {
       <Wrapper>
         <div className="bg-white shadow sm:rounded-lg">
           <div className="px-4 py-5 sm:p-6">
-            <h3 className="mb-6 text-lg font-medium leading-6 text-gray-900">
-              Add Carbon Emission Entry
-            </h3>
+            <h1 className="text-4xl font-bold leading-10 text-gray-900 mb-4">
+              Calculate your Emissions
+            </h1>
+            <div className="relative inline-block">
+              <img 
+                src="https://res.cloudinary.com/dcwbll1kw/image/upload/v1693072890/record-page-banner-top_jhqzxt.jpg"
+                alt="Photo by Viktor Bystrov on Unsplash"
+                className="w-full h-auto rounded-md shadow-lg opacity-90"
+              ></img>
+              <div className="absolute bottom-0 mx-[130px] pb-2 z-10">
+                <p className="text-base text-white font-bold leading-6">Provide your mode of transport and the overall distance covered. With our calculator, we can then calculate your 
+                emissions and you will be able to see how you have contribute to climate protection:</p>
+              </div>
+            </div>
             <div className="relative mt-2 rounded-md shadow-sm">
               <label
                 htmlFor="location"
-                className="block text-sm font-medium text-gray-700"
+                className="mb-3 block text-sm font-medium text-gray-900"
               >
                 Mode of Transport
               </label>
@@ -43,7 +54,7 @@ export default function Example() {
                 }}
                 id="location"
                 name="location"
-                className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                className="block w-full rounded-md border-0 py-2 pl-3 pr-20 mb-3 text-gray-900 ring-1 ring-inset ring-gray-300 appearance:none placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               >
                 <option disabled selected>
                   {" "}
@@ -71,7 +82,7 @@ export default function Example() {
                   }}
                   name="price"
                   id="price"
-                  className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   placeholder="0.00km"
                 />
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -86,17 +97,17 @@ export default function Example() {
               <div>
                 <button
                   type="button"
-                  className="mt-5 inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="mt-5 inline-flex items-center rounded-md border border-transparent bg-[#cdf4ec] px-4 py-2 text-sm font-medium text-[#009278] hover:bg-[#bbf2e7] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2"
                   onClick={calc}
                 >
-                  Add Entry
+                  Calculate
                 </button>
               </div>
             </div>
           </div>
         </div>
         {entered && (
-          <div>
+          <div className="mt-6">
             <Success which={true} points={parseInt(pts)}></Success>
           </div>
         )}

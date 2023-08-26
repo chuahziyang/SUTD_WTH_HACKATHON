@@ -45,9 +45,20 @@ export default function Example() {
       <Wrapper>
         <div className="bg-white shadow sm:rounded-lg">
           <div className=" px-4 sm:p-6">
-            <h3 className="mb-3 text-lg font-medium leading-6 text-gray-900">
-              Add Food Entry
-            </h3>
+            <h1 className="text-4xl font-bold leading-10 text-gray-900 mb-4">
+              Calculate your Food
+            </h1>
+            <div className="relative inline-block">
+              <img 
+                src="https://res.cloudinary.com/dcwbll1kw/image/upload/v1693074879/record-page-banner-top_bh3ozo.jpg"
+                alt="Photo by Karoline Stk on Unsplash"
+                className="w-full h-auto rounded-md shadow-lg opacity-90"
+              ></img>
+              <div className="absolute bottom-0 mx-[130px] pb-2 z-10">
+                <p className="text-base text-white font-bold leading-6">Input the type of food you have eaten and the total mass. With our calculator, we can then calculate your 
+              emissions and you will be able to see how you have contributed to climate protection:</p>
+              </div>
+            </div>
 
             {/* <div className="relative mt-2 rounded-md shadow-sm">
               <label
@@ -97,14 +108,14 @@ export default function Example() {
                 <div className="relative mt-2 rounded-md shadow-sm">
                   <label
                     htmlFor="location"
-                    className="block text-sm font-medium text-gray-700"
+                    className="mb-3 block text-sm font-medium text-gray-900"
                   >
                     Type of Food
                   </label>
                 </div>
                 <select
                   value={field.selectedOption}
-                  className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 appearance:none placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   onChange={(e) => {
                     const updatedFields = [...additionalFields];
                     updatedFields[index].selectedOption = e.target.value;
@@ -124,34 +135,45 @@ export default function Example() {
                 <div className="relative mt-3 rounded-md shadow-sm">
                   <label
                     htmlFor="location"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Amount of Food
                   </label>
                 </div>
-                <input
-                  type="number"
-                  value={field.inputValue}
-                  className="block w-full rounded-md border-0 py-1.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                  onChange={(e) => {
-                    const updatedFields = [...additionalFields];
-                    updatedFields[index].inputValue = e.target.value;
-                    setAdditionalFields(updatedFields);
-                  }}
-                />
+                <div className="relative mt-2 rounded-md shadow-sm">
+                  <input
+                    type="number"
+                    value={field.inputValue}
+                    className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    onChange={(e) => {
+                      const updatedFields = [...additionalFields];
+                      updatedFields[index].inputValue = e.target.value;
+                      setAdditionalFields(updatedFields);
+                    }}
+                    placeholder="0.00kg"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                    <span
+                      className="text-gray-500 sm:text-sm"
+                      id="price-currency"
+                    >
+                      kg
+                    </span>
+                </div>
+                </div>
               </div>
             ))}
             <div className="flex flex-row justify-between">
               <button
                 type="button"
-                className="mt-5 inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-5 inline-flex items-center rounded-md border border-transparent bg-[#cdf4ec] px-4 py-2 text-sm font-medium text-[#009278] hover:bg-[#bbf2e7] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2"
                 onClick={calc}
               >
                 Calculate
               </button>
               <button
                 type="button"
-                className="mt-5 inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-5 inline-flex items-center rounded-md border border-transparent bg-[#cdf4ec] px-4 py-2 text-sm font-medium text-[#009278] hover:bg-[#bbf2e7] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2"
                 onClick={addField}
               >
                 Add Entry
