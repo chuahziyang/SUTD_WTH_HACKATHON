@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
-
+import pic1 from "../../public/img/pic1.png";
 const navigation = [
   { name: "Product", href: "#" },
   { name: "Features", href: "#" },
@@ -154,7 +154,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             <div className="page-break"></div>
 
             {/* New section */}
-            <div className="m-6 bg-gray-100 py-12">
+            <div className="m-6 rounded-lg bg-gray-100 py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                   <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
@@ -162,13 +162,13 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   </p>
                 </div>
                 <div className="mt-10">
-                  <div className="items-center justify-center lg:flex">
+                  <div className="items-center justify-center lg:flex-none">
                     {/* Image */}
                     <div className="max-w-md flex-1">
                       <img
-                        className="h-48 w-full rounded-md object-cover object-center shadow-lg"
-                        src="../public/img/pic1.png"
-                        alt="Your Image"
+                        className="h-48 w-full rounded-md object-fill object-center shadow-lg"
+                        src="https://cdn.discordapp.com/attachments/692788133778948155/1144987034163892316/pic1.png"
+                        alt="smh"
                       />
                     </div>
 
@@ -189,7 +189,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             </div>
             {/*End of new section*/}
             {/* New section */}
-            <div className="m-6 bg-gray-100 py-12">
+            <div className="m-6 rounded-lg bg-gray-100 py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                   <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
@@ -197,12 +197,12 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   </p>
                 </div>
                 <div className="mt-10">
-                  <div className="items-center justify-center lg:flex">
+                  <div className="items-center justify-center lg:flex-none">
                     {/* Image */}
                     <div className="max-w-md flex-1">
                       <img
                         className="h-48 w-full rounded-md object-cover object-center shadow-lg"
-                        src="https://example.com/your-image.jpg"
+                        src="https://static.vecteezy.com/system/resources/previews/010/889/793/original/business-idea-share-and-people-team-knowledge-innovation-collaboration-and-lightbulb-solution-illustration-concept-teamwork-strategy-with-brainstorm-bright-or-group-lamp-light-vision-together-vector.jpg"
                         alt="Your Image"
                       />
                     </div>
@@ -224,7 +224,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             </div>
             {/*End of new section*/}
             {/* New section */}
-            <div className="m-6 bg-gray-100 py-12">
+            <div className="m-6 rounded-lg bg-gray-100 py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                   <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
@@ -232,12 +232,12 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   </p>
                 </div>
                 <div className="mt-10">
-                  <div className="items-center justify-center lg:flex">
+                  <div className="items-center justify-center lg:flex-none">
                     {/* Image */}
                     <div className="max-w-md flex-1">
                       <img
                         className="h-48 w-full rounded-md object-cover object-center shadow-lg"
-                        src="https://example.com/your-image.jpg"
+                        src="https://media.istockphoto.com/id/1283693397/vector/success-to-win-in-business-competition-overcome-obstacles-or-motivation-to-solve-problem-and.jpg?s=612x612&w=0&k=20&c=LimRWMzcJ1gxVAPQxD0sGsB6hs91zEIiu1Q3FMZrM5A="
                         alt="Your Image"
                       />
                     </div>
@@ -257,7 +257,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             </div>
             {/*End of new section*/}
             {/* New section */}
-            <div className="mt-6 bg-gray-100 py-12">
+            <div className="mt-6 rounded-lg bg-gray-100 py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                   <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
@@ -265,12 +265,12 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   </p>
                 </div>
                 <div className="mt-10">
-                  <div className="items-center justify-center lg:flex">
+                  <div className="items-center justify-center lg:flex-none">
                     {/* Image */}
                     <div className="max-w-md flex-1">
                       <img
                         className="h-48 w-full rounded-md object-cover object-center shadow-lg"
-                        src="https://example.com/your-image.jpg"
+                        src="https://cdn.shopify.com/s/files/1/0070/7032/files/scaling-small-business.jpg?v=1647034312"
                         alt="Your Image"
                       />
                     </div>
