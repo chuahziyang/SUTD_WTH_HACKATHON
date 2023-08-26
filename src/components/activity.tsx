@@ -35,9 +35,12 @@ export default function Activity() {
   }, []);
 
   const fetchActivities = async () => {
+    const user = supabase.auth.getUser();
+
     const { data, error } = await supabase
       .from("activityEntries")
       .select("*")
+      .eq("userId", (await user).data.user?.id)
       .order("dateTime", { ascending: false })
       .limit(30);
 
