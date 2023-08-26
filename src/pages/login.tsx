@@ -25,17 +25,19 @@ function Login() {
         email: formData.email,
         password: formData.password,
       });
+
       if (error) {
         alert(error.message);
         return;
       }
+
+      console.log("login successful");
+      //reroute
+      router.push("/dashboard");
     } catch (e) {
       console.log(e);
+      alert("An unexpected error occurred. Please try again.");
     }
-
-    console.log("login successful");
-    //reroute
-    router.push("/dashboard");
   }
 
   return (

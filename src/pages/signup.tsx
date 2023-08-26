@@ -20,7 +20,6 @@ function Signup() {
   }
   async function handleSubmit(event) {
     event.preventDefault();
-
     try {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
@@ -32,12 +31,29 @@ function Signup() {
           },
         },
       });
+
+      if (error) {
+        console.error("Error in signup: ", error.message);
+        alert(error.message);
+        return;
+      }
+      // Signup was successful, but email confirmation is pending
       console.log("Check your email for the confirmation link");
-      console.log("sign up successful");
+      alert("Check your email for the confirmation link");
+
+      // Reset the form data
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
+
+      router.push("/login");
     } catch (error) {
       console.log(error);
+      alert("An unexpected error occurred. Please try again.");
     }
-    router.push("/dashboard");
   }
 
   return (
