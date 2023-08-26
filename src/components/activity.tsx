@@ -1,20 +1,35 @@
-const activites = [
-  {
-    date: "27th Aug 2023",
-    time: "04:00 PM",
-    activity: "Walked a total distance of 5.5km",
-    pts: "600",
-  },
-  {
-    date: "26th Aug 2023",
-    time: "08:59 AM",
-    activity: "Carpooled a total distance of 3.4km",
-    pts: "475",
-  },
-  // More people...
-];
+import { useState } from "react";
 
 export default function Activity() {
+  const [activities, setActivities] = useState([
+    {
+      date: "27th Aug 2023",
+      time: "04:00 PM",
+      activity: "Walked a total distance of 5.5km",
+      pts: "600",
+    },
+    {
+      date: "26th Aug 2023",
+      time: "08:59 AM",
+      activity: "Carpooled a total distance of 3.4km",
+      pts: "475",
+    },
+    // More people...
+  ]);
+
+  const handleNewActivity = () => {
+    // Get new activity data
+    const newActivity = {
+      date: "28th Aug 2023",
+      time: "09:00 AM",
+      activity: "New activity description",
+      pts: "500",
+    };
+
+    // Update activities array
+    setActivities((prevActivities) => [...prevActivities, newActivity]);
+  };
+
   return (
     <div className="mt-10 px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -29,6 +44,7 @@ export default function Activity() {
           <button
             type="button"
             className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#009278] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#009278] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2 sm:w-auto"
+            onClick={handleNewActivity}
           >
             New Activity
           </button>
@@ -65,7 +81,7 @@ export default function Activity() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {activites.map((activity) => (
+                  {activities.map((activity) => (
                     <tr
                       key={activity.date}
                       className="divide-x divide-gray-200"
