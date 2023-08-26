@@ -9,9 +9,9 @@ function Signup() {
     lastName: "",
     email: "",
     password: "",
-    // pointsToday: 0,
-    // co2SavedToday: 0.0,
-    // overallPoints: 0,
+    pointsToday: 0,
+    co2SavedToday: 0.0,
+    overallPoints: 0,
   });
   const router = useRouter();
 
@@ -31,9 +31,9 @@ function Signup() {
         data: {
           firstName: formData.firstName,
           lastName: formData.lastName,
-          // pointsToday: formData.pointsToday,
-          // co2SavedToday: formData.co2SavedToday,
-          // overallPoints: formData.overallPoints,
+          pointsToday: formData.pointsToday,
+          co2SavedToday: formData.co2SavedToday,
+          overallPoints: formData.overallPoints,
         },
       },
     });
@@ -43,26 +43,25 @@ function Signup() {
       alert(error.message);
       return;
     }
-    // Signup was successful, but email confirmation is pending
-    console.log("Check your email for the confirmation link");
-    alert("Check your email for the confirmation link");
 
-    // // Insert user details into the database
-    // const { user, error: insertError } = await supabase
-    //   .from("userDetails")
-    //   .insert({
-    //     id: session.user.id,
-    //     firstName: formData.firstName,
-    //     lastName: formData.lastName,
-    //     pointsToday: formData.pointsToday,
-    //     co2SavedToday: formData.co2SavedToday,
-    //     overallPoints: formData.overallPoints,
-    //   });
+    // Insert user details into the database
+    const { error: insertError } = await supabase.from("userDetails").insert({
+      userId: (await supabase.auth.getUser()).data.user?.id,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+      pointsToday: formData.pointsToday,
+      co2SavedToday: formData.co2SavedToday,
+      overallPoints: formData.overallPoints,
+    });
 
-    // // Handle insert error
-    // if (insertError) {
-    //   console.error("Error inserting user details:", insertError.message);
-    // }
+    // Handle insert error
+    if (insertError) {
+      console.error(insertError);
+    } else {
+      console.log(data);
+    }
 
     // Reset the form data
     setFormData({
@@ -70,59 +69,13 @@ function Signup() {
       lastName: "",
       email: "",
       password: "",
-      // pointsToday: 0,
-      // co2SavedToday: 0.0,
-      // overallPoints: 0,
+      pointsToday: 0,
+      co2SavedToday: 0.0,
+      overallPoints: 0,
     });
 
-    router.push("/login");
+    router.push("/dashboard");
   }
-
-  // const handleActivity = async (activity) => {
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser();
-  //   // Insert activity into the database
-  //   const { data, error } = await supabase.from("activityEntries").insert([
-  //     {
-  //       userId: user.id,
-  //       activityType: activity.type,
-  //       pointsEarned: activity.points,
-  //       co2Saved: activity.co2Saved,
-  //       timestamp: activity.timestamp,
-  //     },
-  //   ]);
-
-  //   // Handle error
-  //   if (error) {
-  //     console.error("Error inserting activity:", error.message);
-  //     return;
-  //   }
-
-  //   // Update user details
-  //   const { data: userDetails, error: userDetailsError } = await supabase
-  //     .from("userDetails")
-  //     .update({
-  //       pointsToday: supabase.rpc("increment_points_today", {
-  //         userId: user.id,
-  //         points: activity.points,
-  //       }),
-  //       co2SavedToday: supabase.rpc("increment_co2_saved_today", {
-  //         userId: user.id,
-  //         co2Saved: activity.co2Saved,
-  //       }),
-  //       overallPoints: supabase.rpc("increment_overall_points", {
-  //         userId: user.id,
-  //         points: activity.points,
-  //       }),
-  //     })
-  //     .eq("id", user.id);
-
-  //   // Handle user details error
-  //   if (userDetailsError) {
-  //     console.error("Error updating user details:", userDetailsError.message);
-  //   }
-  // };
 
   return (
     <>
