@@ -1,9 +1,140 @@
+import { useState } from "react";
+import supabase from "../utils/supabaseClient";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 function Signup() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    // pointsToday: 0,
+    // co2SavedToday: 0.0,
+    // overallPoints: 0,
+  });
+  const router = useRouter();
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const { data, error } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+      options: {
+        data: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          // pointsToday: formData.pointsToday,
+          // co2SavedToday: formData.co2SavedToday,
+          // overallPoints: formData.overallPoints,
+        },
+      },
+    });
+
+    if (error) {
+      console.error("Error in signup: ", error.message);
+      alert(error.message);
+      return;
+    }
+    // Signup was successful, but email confirmation is pending
+    console.log("Check your email for the confirmation link");
+    alert("Check your email for the confirmation link");
+
+    // // Insert user details into the database
+    // const { user, error: insertError } = await supabase
+    //   .from("userDetails")
+    //   .insert({
+    //     id: session.user.id,
+    //     firstName: formData.firstName,
+    //     lastName: formData.lastName,
+    //     pointsToday: formData.pointsToday,
+    //     co2SavedToday: formData.co2SavedToday,
+    //     overallPoints: formData.overallPoints,
+    //   });
+
+    // // Handle insert error
+    // if (insertError) {
+    //   console.error("Error inserting user details:", insertError.message);
+    // }
+
+    // Reset the form data
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      // pointsToday: 0,
+      // co2SavedToday: 0.0,
+      // overallPoints: 0,
+    });
+
+    router.push("/login");
+  }
+
+  // const handleActivity = async (activity) => {
+  //   const {
+  //     data: { user },
+  //   } = await supabase.auth.getUser();
+  //   // Insert activity into the database
+  //   const { data, error } = await supabase.from("activityEntries").insert([
+  //     {
+  //       userId: user.id,
+  //       activityType: activity.type,
+  //       pointsEarned: activity.points,
+  //       co2Saved: activity.co2Saved,
+  //       timestamp: activity.timestamp,
+  //     },
+  //   ]);
+
+  //   // Handle error
+  //   if (error) {
+  //     console.error("Error inserting activity:", error.message);
+  //     return;
+  //   }
+
+  //   // Update user details
+  //   const { data: userDetails, error: userDetailsError } = await supabase
+  //     .from("userDetails")
+  //     .update({
+  //       pointsToday: supabase.rpc("increment_points_today", {
+  //         userId: user.id,
+  //         points: activity.points,
+  //       }),
+  //       co2SavedToday: supabase.rpc("increment_co2_saved_today", {
+  //         userId: user.id,
+  //         co2Saved: activity.co2Saved,
+  //       }),
+  //       overallPoints: supabase.rpc("increment_overall_points", {
+  //         userId: user.id,
+  //         points: activity.points,
+  //       }),
+  //     })
+  //     .eq("id", user.id);
+
+  //   // Handle user details error
+  //   if (userDetailsError) {
+  //     console.error("Error updating user details:", userDetailsError.message);
+  //   }
+  // };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img className="mx-auto h-12 w-auto" src="img/logo.svg" alt="logo" />
+          <Link href="/">
+            <img
+              className="mx-auto h-12 w-auto"
+              src="img/logo.svg"
+              alt="logo"
+            />
+          </Link>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create an account
           </h2>
@@ -14,43 +145,47 @@ function Signup() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
-                  htmlFor="first name"
+                  htmlFor="firstName"
                   className="block text-sm font-medium text-gray-700"
                 >
                   First name
                 </label>
                 <div className="mt-1">
                   <input
-                    id="first name"
-                    name="first name"
-                    type="first name"
-                    autoComplete="first name"
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    autoComplete="firstName"
                     required
+                    onChange={handleChange}
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
+
               <div>
                 <label
-                  htmlFor="last name"
+                  htmlFor="lastName"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Last name
                 </label>
                 <div className="mt-1">
                   <input
-                    id="last name"
-                    name="last name"
-                    type="last name"
-                    autoComplete="last name"
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    autoComplete="lastName"
                     required
+                    onChange={handleChange}
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -65,10 +200,12 @@ function Signup() {
                     type="email"
                     autoComplete="email"
                     required
+                    onChange={handleChange}
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
+
               <div>
                 <label
                   htmlFor="password"
@@ -83,6 +220,7 @@ function Signup() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={handleChange}
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -95,6 +233,16 @@ function Signup() {
                 >
                   Create account
                 </button>
+              </div>
+
+              <div className="text-center text-sm">
+                Already have an account?{" "}
+                <Link
+                  href="/login"
+                  className="font-medium text-custom-green hover:text-custom-green-hover"
+                >
+                  Login
+                </Link>
               </div>
             </form>
           </div>
