@@ -1,10 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/react/solid";
 import Wrapper from "@components/components/wrapper";
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
+import supabase from "@components/utils/supabaseClient";
 
 const people = [
   {
@@ -31,6 +32,24 @@ const people = [
 ];
 
 export default function Example() {
+  const [overallPoints, setOverallPoints] = useState(0);
+
+  useEffect(() => {
+    const fetchOverallPoints = async () => {
+      const userId = (await supabase.auth.getUser()).data.user?.id;
+      const { data, error } = await supabase
+        .from("userDetails")
+        .select("*")
+        .eq("userId", userId);
+      if (error) {
+        console.error("Error fetching user stats:", error);
+        return;
+      }
+      setOverallPoints(data[0].overallPoints);
+    };
+    fetchOverallPoints();
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -41,7 +60,7 @@ export default function Example() {
                 Number of points
               </dt>
               <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                123123
+                {overallPoints}
               </dd>
             </div>
           </dl>
