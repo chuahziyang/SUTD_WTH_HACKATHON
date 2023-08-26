@@ -15,6 +15,7 @@ const navigation = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "Add Record", href: "/record" },
   { name: "Add Food", href: "/food" },
+  { name: "Rewards", href: "/reward" },
 ];
 
 const userNavigation = [
