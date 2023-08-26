@@ -17,19 +17,6 @@ export default function Example() {
 
     setpts((inputValue / ans[selectedOption]) * 1000);
   };
-  // const arr = [8, 12, 80, 30];
-  // // Check the selected option and execute the corresponding script
-  // if (isNaN(inputValue) || inputValue === "") {
-  //   alert("Please enter a valid value");
-  // } else if (selectedOption === "walk") {
-  //   pts += (inputValue / arr[0]) * 1000;
-  // } else if (selectedOption === "cycle") {
-  //   pts += (inputValue / arr[1]) * 1000;
-  // } else if (selectedOption === "carpool") {
-  //   pts += (inputValue / arr[2]) * 1000;
-  // } else if (selectedOption === "publicTransport") {
-  //   pts += (inputValue / arr[3]) * 1000;
-  // }
 
   return (
     <>
