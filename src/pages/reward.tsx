@@ -4,12 +4,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/react/solid";
 import Wrapper from "@components/components/wrapper";
-const stats = [
-  { name: "Points Today", stat: "1,456" },
-  { name: "CO2 Saved Today", stat: "0.407t" },
-  { name: "Overall points", stat: "12,785" },
-  // previousStat: '70,946', change: '12%', changeType: 'increase'
-];
 
 const activites = [
   {
