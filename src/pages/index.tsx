@@ -112,7 +112,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              GGSG
+              Team Save Money
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Interested to do your part and save the Earth? Click below to find
@@ -133,9 +133,9 @@ className="text-sm font-semibold leading-6 text-gray-900"
             {/* Existing content */}
             {/* New section */}
             <div className="m-6 rounded-lg bg-white py-12">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8">
                 <div className="lg:text-center">
-                  <p className="mx-auto text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+                  <p className="mx-auto pb-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
                     Problem we are trying to solve and its significance
                   </p>
                 </div>
@@ -144,9 +144,9 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   {/* Image */}
                   <div className="w-1/2">
                     <img
-                      className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
+                      className="h-48 rounded-md object-fill shadow-lg"
                       src="https://cdn.discordapp.com/attachments/692788133778948155/1144987034163892316/pic1.png"
-                      alt="Your Image"
+                      alt="pic1"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
@@ -168,7 +168,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             <div className="m-6 rounded-lg bg-white py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
-                  <p className="mx-auto text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+                  <p className="mx-auto pb-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
                     Our Solution
                   </p>
                 </div>
@@ -179,7 +179,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://static.vecteezy.com/system/resources/previews/010/889/793/original/business-idea-share-and-people-team-knowledge-innovation-collaboration-and-lightbulb-solution-illustration-concept-teamwork-strategy-with-brainstorm-bright-or-group-lamp-light-vision-together-vector.jpg"
-                      alt="Your Image"
+                      alt="Pic2"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
@@ -201,7 +201,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             <div className="m-6 rounded-lg bg-white py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
-                  <p className="mx-auto text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+                  <p className="mx-auto pb-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
                     Key challenges
                   </p>
                 </div>
@@ -212,7 +212,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://media.istockphoto.com/id/1283693397/vector/success-to-win-in-business-competition-overcome-obstacles-or-motivation-to-solve-problem-and.jpg?s=612x612&w=0&k=20&c=LimRWMzcJ1gxVAPQxD0sGsB6hs91zEIiu1Q3FMZrM5A="
-                      alt="Your Image"
+                      alt="Pic 3"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
@@ -239,7 +239,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             <div className="m-6 rounded-lg bg-white py-12">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
-                  <p className="mx-auto text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+                  <p className="mx-auto pb-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
                     Future Plans and Implementations
                   </p>
                 </div>
@@ -250,7 +250,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://cdn.shopify.com/s/files/1/0070/7032/files/scaling-small-business.jpg?v=1647034312"
-                      alt="Your Image"
+                      alt="Pic4"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
