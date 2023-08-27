@@ -47,7 +47,7 @@ const people = [
     role: "50,000 points",
     price: 50000,
     image:
-      "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080117/marina-bay-sands_gt1ldm.jpg",
+      "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080092/marina-bay-sands_gqt5pf.jpg",
   },
   {
     name: "Taylor Swift Tickets",
