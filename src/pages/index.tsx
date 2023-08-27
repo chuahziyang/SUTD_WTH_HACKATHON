@@ -112,7 +112,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Team Save Money
+              GoGreen
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Interested to do your part and save the Earth? Click below to find
@@ -142,9 +142,9 @@ className="text-sm font-semibold leading-6 text-gray-900"
 
                 <div className="flex items-center justify-center">
                   {/* Image */}
-                  <div className="w-1/2">
+                  <div className="w-1/4">
                     <img
-                      className="h-48 rounded-md object-fill shadow-lg"
+                      className=" rounded-md object-fill shadow-lg"
                       src="https://cdn.discordapp.com/attachments/692788133778948155/1144987034163892316/pic1.png"
                       alt="pic1"
                     />
@@ -175,7 +175,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
 
                 <div className="flex items-center justify-center">
                   {/* Image */}
-                  <div className="w-1/2">
+                  <div className="w-1/4">
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://static.vecteezy.com/system/resources/previews/010/889/793/original/business-idea-share-and-people-team-knowledge-innovation-collaboration-and-lightbulb-solution-illustration-concept-teamwork-strategy-with-brainstorm-bright-or-group-lamp-light-vision-together-vector.jpg"
@@ -208,7 +208,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
 
                 <div className="flex items-center justify-center">
                   {/* Image */}
-                  <div className="w-1/2">
+                  <div className="w-1/4">
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://media.istockphoto.com/id/1283693397/vector/success-to-win-in-business-competition-overcome-obstacles-or-motivation-to-solve-problem-and.jpg?s=612x612&w=0&k=20&c=LimRWMzcJ1gxVAPQxD0sGsB6hs91zEIiu1Q3FMZrM5A="
@@ -246,7 +246,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
 
                 <div className="flex items-center justify-center">
                   {/* Image */}
-                  <div className="w-1/2">
+                  <div className="w-1/4">
                     <img
                       className="w-160 h-48 rounded-md object-cover object-center shadow-lg"
                       src="https://cdn.shopify.com/s/files/1/0070/7032/files/scaling-small-business.jpg?v=1647034312"
@@ -275,6 +275,11 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
         </div>
       </div>
+      <footer className="w-100 sticky bottom-0 flex items-center rounded-t bg-zinc-200 pt-2">
+        <div className="flex-grow text-center">Email: helpdesk@gogreen.sg</div>
+        <div className="flex-grow text-center">© 2023 Copyright: GoGreen</div>
+        <div className="flex-grow text-center">Contact: 9876 5432</div>
+      </footer>
     </div>
   );
 }
