@@ -1,5 +1,7 @@
 import React from "react";
 
+const ratio = 0.018;
+
 const Success = (props) => {
   return (
     <div className="rounded-md bg-green-50 p-4">
@@ -11,7 +13,7 @@ const Success = (props) => {
             // v-bind:className="mapping[success].textcolour"
           >
             You have successfully logged this {props.which ? "trip" : "meal"}!,
-            Total CO2 Used: 18g
+            Total CO2 Used: {props.points * ratio} kg
             <br />
             Thats {props.points} points for you!
           </p>
