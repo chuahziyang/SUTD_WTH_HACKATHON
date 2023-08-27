@@ -22,7 +22,7 @@ export default function Example() {
 
   return (
     <div className="bg-gradient-to-r from-lime-200 via-transparent to-sky-200">
-      <header className="absolute inset-x-0 top-0 z-50 rounded-md bg-white">
+      <header className="absolute inset-x-0 top-0 z-50 rounded-md">
         <nav
           className="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
