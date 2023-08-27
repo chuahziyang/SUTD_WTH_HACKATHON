@@ -73,7 +73,7 @@ export default function Example() {
           <dl className="my-5 ">
             <div className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
               <h1 className="text-4xl font-bold leading-10 text-gray-900 mb-8">
-                REWARDS
+                Rewards
               </h1>
               <dt className="truncate text-sm font-medium text-gray-500">
                 Number of points
