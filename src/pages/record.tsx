@@ -17,7 +17,7 @@ export default function Example() {
       carpool: 80,
       publicTransport: 30,
     };
-    const points = (inputValue / ans[selectedOption]) * 1000;
+    const points = parseInt((inputValue / ans[selectedOption]) * 1000);
     console.log(points);
     setpts(points);
     setentered(true);

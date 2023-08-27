@@ -13,7 +13,7 @@ const Success = (props) => {
             // v-bind:className="mapping[success].textcolour"
           >
             You have successfully logged this {props.which ? "trip" : "meal"}!,
-            Total CO2 Used: {(props.points * ratio).toFixed(2)} kg
+            Total CO2 Saved: {(props.points * ratio).toFixed(2)} kg
             <br />
             Thats {props.points} points for you!
           </p>
