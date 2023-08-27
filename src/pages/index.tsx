@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
 import Footer from "../components/footer";
+import { useRef } from "react";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -12,6 +13,12 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const messagesEndRef = useRef(null);
+
+  const scroll = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="bg-gradient-to-r from-lime-200 via-transparent to-sky-200">
@@ -108,9 +115,12 @@ className="text-sm font-semibold leading-6 text-gray-900"
         ></div>
         <div className="mx-auto max-w-2xl py-10 sm:py-40 lg:py-40">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Find out more about our motivations behind this green initiative!{" "}
-            </div>
+            <button onClick={() => scroll()}>
+              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                Find out more about our motivations behind this green
+                initiative!{" "}
+              </div>
+            </button>
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -132,6 +142,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
         </div>
         <div>
           <div className="relative isolate px-6 lg:px-2">
+            <div ref={messagesEndRef} className="mb-5" />
             {/* Existing content */}
             {/* New section */}
             <div className="m-6 rounded-lg bg-white py-12">
