@@ -1,53 +1,73 @@
-import { useState } from "react";
+import supabase from "@components/utils/supabaseClient";
+import { useEffect, useState } from "react";
+
+const getFormattedActivity = (entry) => {
+  const activityTypes = {
+    walk: "Walked",
+    cycle: "Cycled",
+    carpool: "Carpooled",
+    publicTransport: "Traveled via public transport",
+  };
+
+  const verb = activityTypes[entry.type] || "Traveled";
+  return `${verb} a total distance of ${entry.distance} km`;
+};
 
 export default function Activity() {
   const [activities, setActivities] = useState([
-    {
-      date: "27th Aug 2023",
-      time: "04:00 PM",
-      activity: "Walked a total distance of 5.5km",
-      pts: "600",
-    },
-    {
-      date: "26th Aug 2023",
-      time: "08:59 AM",
-      activity: "Carpooled a total distance of 3.4km",
-      pts: "475",
-    },
-    // More people...
+    // {
+    //   date: "27th Aug 2023",
+    //   time: "04:00 PM",
+    //   activity: "Walked a total distance of 5.5km",
+    //   pts: "600",
+    // },
+    // {
+    //   date: "26th Aug 2023",
+    //   time: "08:59 AM",
+    //   activity: "Carpooled a total distance of 3.4km",
+    //   pts: "475",
+    // },
+    // // More people...
   ]);
 
-  const handleNewActivity = () => {
-    // Get new activity data
-    const newActivity = {
-      date: "28th Aug 2023",
-      time: "09:00 AM",
-      activity: "New activity description",
-      pts: "500",
-    };
+  useEffect(() => {
+    fetchActivities();
+  }, []);
 
-    // Update activities array
-    setActivities((prevActivities) => [...prevActivities, newActivity]);
+  const fetchActivities = async () => {
+    const user = supabase.auth.getUser();
+
+    const { data, error } = await supabase
+      .from("activityEntries")
+      .select("*")
+      .eq("userId", (await user).data.user?.id)
+      .order("dateTime", { ascending: false })
+      .limit(30);
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    const formattedData = data.map((entry) => ({
+      date: new Date(entry.dateTime).toLocaleDateString(),
+      time: new Date(entry.dateTime).toLocaleTimeString(),
+      activity: getFormattedActivity(entry),
+      pts: entry.pointsAward,
+    }));
+
+    setActivities(formattedData);
   };
 
   return (
     <div className="mt-10 px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">Users</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Activity</h1>
           <p className="mt-2 text-sm text-gray-700">
             A list of all activities within the past 30 days including their
             date, time, and a point rewards summary.
           </p>
-        </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#009278] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#009278] focus:outline-none focus:ring-2 focus:ring-[#009278] focus:ring-offset-2 sm:w-auto"
-            onClick={handleNewActivity}
-          >
-            New Activity
-          </button>
         </div>
       </div>
       <div className="mt-8 flex flex-col">
