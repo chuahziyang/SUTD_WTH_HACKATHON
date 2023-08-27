@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
+import Footer from "../components/footer";
+
 const navigation = [
   { name: "Product", href: "#" },
   { name: "Features", href: "#" },
@@ -275,11 +277,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
         </div>
       </div>
-      <footer className="w-100 sticky bottom-0 flex items-center rounded-t bg-zinc-200 pt-2">
-        <div className="flex-grow text-center">Email: helpdesk@gogreen.sg</div>
-        <div className="flex-grow text-center">© 2023 Copyright: Go Green</div>
-        <div className="flex-grow text-center">Contact: 9876 5432</div>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 }
