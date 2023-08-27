@@ -10,22 +10,38 @@ const people = [
   {
     name: "Grab Unlimited",
     title: "1 Month of Grab Unlimited",
-    role: "2000 points",
+    role: "2,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693077630/grab-unlimited-logo_h4e72f.jpg",
   },
   {
     name: "Swensens",
     title: "10$ off your next order",
-    role: "3000 points",
+    role: "3,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693078069/swensens-logo_kysjjn.png",
   },
   {
-    name: "An Accai Affair",
-    title: "Free Accai Bowl",
-    role: "5000 points",
+    name: "An Acai Affair",
+    title: "Free Acai Bowl",
+    role: "5,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693078363/an-acai-affair-logo_ydphmk.jpg",
+  },
+  {
+    name: "iPhone 15",
+    title: "Latest unreleased iPhone 15",
+    role: "250,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080387/iphone-15_s8eyrl.png"
+  },
+  {
+    name: "Marina Bay Sands",
+    title: "1 night stay at Marina Bay Sands for 2",
+    role: "50,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080117/marina-bay-sands_gt1ldm.jpg"
   },
   {
     name: "Taylor Swift Tickets",
     title: "Cat 2B Tickets",
-    role: "100 000 points",
+    role: "100,000 points",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693079821/taylor-swift_xqblcm.png",
   },
   // More people...
 ];
@@ -37,6 +53,9 @@ export default function Example() {
         <div>
           <dl className="my-5 ">
             <div className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+              <h1 className="text-4xl font-bold leading-10 text-gray-900 mb-8">
+                REWARDS
+              </h1>
               <dt className="truncate text-sm font-medium text-gray-500">
                 Number of points
               </dt>
@@ -57,6 +76,11 @@ export default function Example() {
             >
               <div className="flex w-full items-center justify-between space-x-6 p-6">
                 <div className="flex-1 truncate">
+                <img
+                  src={person.image}
+                  alt="Logo"
+                  className="w-full h-auto rounded-lg mb-4"
+                />
                   <div className="flex items-center space-x-3">
                     <h3 className="truncate text-sm font-medium text-gray-900">
                       {person.name}
