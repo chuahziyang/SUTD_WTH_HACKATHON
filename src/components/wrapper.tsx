@@ -5,6 +5,7 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import router, { useRouter } from "next/router";
 import supabase from "../utils/supabaseClient";
 import Link from "next/link";
+import Footer from "./footer";
 
 const user = {
   name: "Tom Cook",
@@ -93,7 +94,7 @@ export default function Wrapper({ children }) {
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <button
                       type="button"
-                      className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:text-thegreen"
+                      className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:text-thegreen focus:outline-none"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -227,6 +228,8 @@ export default function Wrapper({ children }) {
         <div className="py-10">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">{children}</div>
         </div>
+
+        <Footer>i</Footer>
       </div>
     </>
   );

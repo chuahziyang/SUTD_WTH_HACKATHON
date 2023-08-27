@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
+import Footer from "../components/footer";
+import { useRef } from "react";
+
 import anime from 'animejs';
 const navigation = [
   { name: "Product", href: "#" },
@@ -11,6 +14,12 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const messagesEndRef = useRef(null);
+
+  const scroll = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     // Wrap every letter in a span
@@ -132,9 +141,12 @@ className="text-sm font-semibold leading-6 text-gray-900"
         ></div>
         <div className="mx-auto max-w-2xl py-10 sm:py-40 lg:py-40">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Find out more about our motivations behind this green initiative!{" "}
-            </div>
+            <button onClick={() => scroll()}>
+              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                Find out more about our motivations behind this green
+                initiative!{" "}
+              </div>
+            </button>
           </div>
           <div className="text-center">
           <h1 className="ml3 text-6xl font-bold tracking-tight text-thegreen sm:text-6xl">
@@ -156,6 +168,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
         </div>
         <div>
           <div className="relative isolate px-6 lg:px-2">
+            <div ref={messagesEndRef} className="mb-5" />
             {/* Existing content */}
             {/* New section */}
             <div className="m-6 rounded-lg bg-white py-12">
@@ -301,11 +314,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
         </div>
       </div>
-      <footer className="w-100 sticky bottom-0 flex items-center rounded-t bg-zinc-200 pt-2">
-        <div className="flex-grow text-center">Email: helpdesk@gogreen.sg</div>
-        <div className="flex-grow text-center">© 2023 Copyright: GoGreen</div>
-        <div className="flex-grow text-center">Contact: 9876 5432</div>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 }

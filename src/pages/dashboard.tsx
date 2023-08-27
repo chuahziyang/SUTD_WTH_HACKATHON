@@ -44,7 +44,7 @@ export default function Dashboard() {
         { name: "Points Today", stat: userStats.pointsToday.toString() },
         {
           name: "CO2 Saved Today",
-          stat: `${userStats.co2SavedToday.toFixed(1)}t`,
+          stat: ((userStats.overallPoints / 1000) * 0.018).toFixed(2) + "T",
         },
         { name: "Overall points", stat: userStats.overallPoints.toString() },
       ]);
