@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import Link from "next/link";
 import Footer from "../components/footer";
 import { useRef } from "react";
 
+import anime from 'animejs';
 const navigation = [
   { name: "Product", href: "#" },
   { name: "Features", href: "#" },
@@ -19,6 +20,31 @@ export default function Example() {
   const scroll = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    // Wrap every letter in a span
+    const textWrapper = document.querySelector('.ml3');
+    textWrapper.innerHTML = textWrapper.textContent.replace(
+      /\S/g,
+      "<span class='letter inline-block'>$&</span>"
+    );
+
+    anime.timeline({ loop: true })
+      .add({
+        targets: '.ml3 .letter',
+        opacity: [0, 1],
+        easing: 'easeInOutQuad',
+        duration: 2250,
+        delay: (el, i) => 150 * (i + 1),
+      })
+      .add({
+        targets: '.ml3',
+        opacity: 0,
+        duration: 1000,
+        easing: 'easeOutExpo',
+        delay: 1000,
+      });
+  }, []);
 
   return (
     <div className="bg-gradient-to-r from-lime-200 via-transparent to-sky-200">
@@ -123,9 +149,9 @@ className="text-sm font-semibold leading-6 text-gray-900"
             </button>
           </div>
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              GoGreen
-            </h1>
+          <h1 className="ml3 text-6xl font-bold tracking-tight text-thegreen sm:text-6xl">
+            <span className="ml3">GoGreen</span>
+          </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Interested to do your part and save the Earth? Click below to find
               out more!
@@ -133,7 +159,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-thegreen px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get started
               </Link>

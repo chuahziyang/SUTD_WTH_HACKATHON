@@ -46,8 +46,7 @@ const people = [
     title: "1 night stay at Marina Bay Sands for 2",
     role: "50,000 points",
     price: 50000,
-    image:
-      "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080092/marina-bay-sands_gqt5pf.jpg",
+    image: "https://res.cloudinary.com/dcwbll1kw/image/upload/v1693080092/marina-bay-sands_gqt5pf.jpg",
   },
   {
     name: "Taylor Swift Tickets",
