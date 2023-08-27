@@ -112,7 +112,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Team Save Money
+              Go Green
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Interested to do your part and save the Earth? Click below to find
@@ -275,10 +275,10 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
         </div>
       </div>
-      <footer className="w-100 bg-grey-100 sticky bottom-0 flex items-center rounded-lg pt-10">
-        <div className="object-center">Email:123</div>
-        <div>© 2023 Copyright: Go Green</div>
-        <div>Contact:123</div>
+      <footer className="w-100 sticky bottom-0 flex items-center rounded-t bg-zinc-200 pt-2">
+        <div className="flex-grow text-center">Email: helpdesk@gogreen.sg</div>
+        <div className="flex-grow text-center">© 2023 Copyright: Go Green</div>
+        <div className="flex-grow text-center">Contact: 9876 5432</div>
       </footer>
     </div>
   );
