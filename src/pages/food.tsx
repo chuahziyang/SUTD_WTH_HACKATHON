@@ -45,18 +45,22 @@ export default function Example() {
       <Wrapper>
         <div className="bg-white shadow sm:rounded-lg">
           <div className=" px-4 sm:p-6">
-            <h1 className="text-4xl font-bold leading-10 text-gray-900 mb-4">
+            <h1 className="mb-4 text-4xl font-bold leading-10 text-gray-900">
               Calculate your Food
             </h1>
             <div className="relative inline-block">
-              <img 
+              <img
                 src="https://res.cloudinary.com/dcwbll1kw/image/upload/v1693074879/record-page-banner-top_bh3ozo.jpg"
                 alt="Photo by Karoline Stk on Unsplash"
-                className="w-full h-auto rounded-md shadow-lg opacity-90"
+                className="h-auto w-full rounded-md opacity-90 shadow-lg"
               ></img>
-              <div className="absolute bottom-0 mx-[130px] pb-2 z-10">
-                <p className="text-base text-white font-bold leading-6">Input the type of food you have eaten and the total mass. With our calculator, we can then calculate your 
-              emissions and you will be able to see how you have contributed to climate protection:</p>
+              <div className="absolute bottom-0 z-10 mx-[130px] pb-2">
+                <p className="text-base font-bold leading-6 text-white">
+                  Input the type of food you have eaten and the total mass. With
+                  our calculator, we can then calculate your emissions and you
+                  will be able to see how you have contributed to climate
+                  protection:
+                </p>
               </div>
             </div>
 
@@ -115,7 +119,7 @@ export default function Example() {
                 </div>
                 <select
                   value={field.selectedOption}
-                  className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 appearance:none placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  className="appearance:none mb-3 block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 outline-none ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   onChange={(e) => {
                     const updatedFields = [...additionalFields];
                     updatedFields[index].selectedOption = e.target.value;
@@ -144,7 +148,7 @@ export default function Example() {
                   <input
                     type="number"
                     value={field.inputValue}
-                    className="block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 [appearance:textfield] placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className="appearance:none mb-3 block w-full rounded-md border-0 py-2 pl-3 pr-20 text-gray-900 outline-none ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#009278] sm:text-sm sm:leading-6 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     onChange={(e) => {
                       const updatedFields = [...additionalFields];
                       updatedFields[index].inputValue = e.target.value;
@@ -159,7 +163,7 @@ export default function Example() {
                     >
                       kg
                     </span>
-                </div>
+                  </div>
                 </div>
               </div>
             ))}
