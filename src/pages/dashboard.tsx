@@ -20,6 +20,7 @@ function classNames(...classes) {
 }
 
 export default function Dashboard() {
+  const [name, setName] = useState("");
   const router = useRouter();
   const [stats, setStats] = useState([
     { name: "Points Today", stat: "0" },
@@ -40,10 +41,14 @@ export default function Dashboard() {
       }
       const userStats = data[0];
       setStats([
-        { name: "Points Today", stat: userStats.pointsToday },
-        { name: "CO2 Saved Today", stat: `${userStats.co2SavedToday}t` },
-        { name: "Overall points", stat: userStats.overallPoints },
+        { name: "Points Today", stat: userStats.pointsToday.toString() },
+        {
+          name: "CO2 Saved Today",
+          stat: `${userStats.co2SavedToday.toFixed(1)}t`,
+        },
+        { name: "Overall points", stat: userStats.overallPoints.toString() },
       ]);
+      setName(userStats.firstName + " " + userStats.lastName);
     };
 
     const checkSession = async () => {
@@ -69,33 +74,6 @@ export default function Dashboard() {
     checkSession();
   }, [router]);
 
-  useEffect(() => {
-    const fetchStats = async () => {
-      const user = supabase.auth.getUser();
-
-      const { data: userDetails, error: userDetailsError } = await supabase
-        .from("userDetails")
-        .select("*")
-        .eq("userId", (await user).data.user?.id);
-      if (userDetailsError) {
-        console.error("Error fetching user details:", userDetailsError);
-        return;
-      }
-
-      const userStats = userDetails[0];
-      setStats([
-        { name: "Points Today", stat: userStats.pointsToday.toString() },
-        {
-          name: "CO2 Saved Today",
-          stat: `${userStats.co2SavedToday.toFixed(1)}t`,
-        },
-        { name: "Overall points", stat: userStats.overallPoints.toString() },
-      ]);
-    };
-
-    fetchStats();
-  }, []);
-
   return (
     <>
       <Wrapper>
@@ -103,7 +81,7 @@ export default function Dashboard() {
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <h2 className="font-400 pb-4 text-lg leading-tight text-gray-900">
-                Welcome, Victor Zhao
+                Welcome, {name}
               </h2>
             </div>
           </header>
