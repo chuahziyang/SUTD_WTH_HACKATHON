@@ -175,7 +175,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
               <div className="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                   <p className="mx-auto pb-4 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-                    Problem we are trying to solve and its significance
+                    Our Mission
                   </p>
                 </div>
 
@@ -191,8 +191,8 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   <div className="mx-3.5 mt-4 w-4/5">
                     <p className="text-xl text-gray-700">
                       We aim to promote inclusive, safe, resilient, and
-                      sustainable transport systems for all By reducing carbon
-                      emissions and promoting more sustainable transportation
+                      sustainable transportation systems for all. By reducing carbon
+                      emissions and advocating sustainable transportation
                       modes to combat climate change, individuals are encouraged
                       to be more conscious in decision-making and align with
                       broader goals of environmental conservation and societal
@@ -223,13 +223,13 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
                     <p className="text-xl text-gray-700">
-                      The viability of affordable, accessible and sustainable
+                      The viability of environmentally sustainable
                       transport systems is incentivised on the platform as users
                       are allowed to earn rewards and track their progress
                       towards a greener lifestyle. These features allow for
                       users to understand their carbon footprint and encourages
                       a behaviour change towards green products, fostering a
-                      sustainable-focused society
+                      sustainable-focused society.
                     </p>
                   </div>
                 </div>
@@ -257,15 +257,13 @@ className="text-sm font-semibold leading-6 text-gray-900"
                   <div className="mx-3.5 mt-4 w-4/5">
                     <div className="text-xl text-gray-700">
                       Listed are some of the key challenges we face and we
-                      welcome anyone to contact us with their proposed solution.
-                      Integration with Multiple Platforms Partnership and
-                      Collaboration Behavioral Psychology Understanding
+                      welcome anyone to contact us with their proposed solution:
                       <ul>
                         <li>
-                          - Integration with Multiple Platforms Partnership
+                          - Integration with Multiple Platforms
                         </li>
                         <li>
-                          - Collaboration Behavioral Psychology Understanding
+                          - Behavioral Psychology Understanding
                         </li>
                       </ul>
                     </div>
@@ -298,12 +296,14 @@ className="text-sm font-semibold leading-6 text-gray-900"
                       reach a wider audience while serving a greater good. Do
                       contact us if you can help us achieve our goal!
                       <ul>
-                        <li>- API</li>
+                        <li>- API Integration</li>
                         <li>
-                          - Integration Machine Learning Algorithms
-                          Multi-Platform
+                          - Machine Learning Algorithms
                         </li>
-                        <li>- Support Personalization</li>
+                        <li>
+                          - Multi Platform Optimization
+                        </li>
+                        <li>- User Interface Personalization</li>
                       </ul>
                     </div>
                   </div>
