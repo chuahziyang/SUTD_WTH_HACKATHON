@@ -275,6 +275,11 @@ className="text-sm font-semibold leading-6 text-gray-900"
           </div>
         </div>
       </div>
+      <footer className="w-100 bg-grey-100 sticky bottom-0 flex items-center rounded-lg pt-10">
+        <div className="object-center">Email:123</div>
+        <div>© 2023 Copyright: Go Green</div>
+        <div>Contact:123</div>
+      </footer>
     </div>
   );
 }
