@@ -216,7 +216,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
-                    <p className="text-xl text-gray-700">
+                    <div className="text-xl text-gray-700">
                       Listed are some of the key challenges we face and we
                       welcome anyone to contact us with their proposed solution.
                       Integration with Multiple Platforms Partnership and
@@ -229,7 +229,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                           - Collaboration Behavioral Psychology Understanding
                         </li>
                       </ul>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -254,7 +254,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                     />
                   </div>
                   <div className="mx-3.5 mt-4 w-4/5">
-                    <p className="text-xl text-gray-700">
+                    <div className="text-xl text-gray-700">
                       Proposed are some ways we can scale our initiative and
                       reach a wider audience while serving a greater good. Do
                       contact us if you can help us achieve our goal!
@@ -266,7 +266,7 @@ className="text-sm font-semibold leading-6 text-gray-900"
                         </li>
                         <li>- Support Personalization</li>
                       </ul>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
